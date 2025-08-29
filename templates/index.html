@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crop Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen py-8 px-4">
+    <div class="max-w-2xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Crop Prediction</h1>
+            <p class="text-gray-600">Enter soil and environmental parameters to predict the best crop for your land</p>
+        </div>
+
+        <!-- Form Container -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <form action="/predict" method="post" class="space-y-6">
+                <!-- Soil Nutrients Section -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-gray-700 border-b border-gray-200 pb-2">Soil Nutrients</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Nitrogen (N)</label>
+                            <input type="text" 
+                                   name="Nitrogen" 
+                                   placeholder="Nitrogen" 
+                                   required="required" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-gray-400" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Phosphorus (P)</label>
+                            <input type="text" 
+                                   name="Phosphorus" 
+                                   placeholder="Phosphorus" 
+                                   required="required" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-gray-400" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Potassium (K)</label>
+                            <input type="text" 
+                                   name="Potassium" 
+                                   placeholder="Potassium" 
+                                   required="required" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-gray-400" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Environmental Conditions Section -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-gray-700 border-b border-gray-200 pb-2">Environmental Conditions</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Temperature (°C)</label>
+                            <input type="text" 
+                                   name="temperature" 
+                                   placeholder="temperature" 
+                                   required="required" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-gray-400" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Humidity (%)</label>
+                            <input type="text" 
+                                   name="humidity" 
+                                   placeholder="humidity" 
+                                   required="required" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-gray-400" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">pH Level</label>
+                            <input type="text" 
+                                   name="pH" 
+                                   placeholder="pH" 
+                                   required="required" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-gray-400" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Rainfall (mm)</label>
+                            <input type="text" 
+                                   name="rainfall" 
+                                   placeholder="rainfall" 
+                                   required="required" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-gray-400" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <input type="submit" 
+                           value="Predict" 
+                           class="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold py-4 px-6 rounded-lg hover:from-green-700 hover:to-blue-700 transform hover:scale-[1.02] transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl" />
+                </div>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 text-center text-gray-800 min-h-[60px] border-2 border-dashed border-gray-200 rounded-lg bg-gray-50">
+            <h1 id="predi" class="text-2xl font-bold flex items-center justify-center">
+                 {{ prediction_text|upper }}
+            </h1>
+            <img src="/static/images/{{prediction_text}}.png" alt="{{prediction_text}}" class="h-28 mx-auto mb-4">
+        </div>
+    </div>
+</body>
+</html>
