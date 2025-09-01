@@ -55,6 +55,10 @@ This project is a web application that predicts the most suitable crop to grow b
 
 5. **Open in your browser:**
    - Go to [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+  
+## UI
+
+<img width="768" height="981" alt="Image" src="https://github.com/user-attachments/assets/7f054d66-13e1-4e73-b68c-3d8874798f0f" />
 
 ## Usage
 
